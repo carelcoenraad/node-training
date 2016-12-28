@@ -48,7 +48,7 @@ const usersController = {
       .then((data) => {
         if (!data) {
           res.status(404);
-          res.send(`Could not find user with id ${userId}`);
+          res.json({error : `Could not find user with id ${userId}`});
         }
 
         res.status(200);

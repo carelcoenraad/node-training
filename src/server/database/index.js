@@ -16,11 +16,7 @@ const Database = {
   },
 
   createUser(firstName, lastName) {
-    return new Promise((resolve, reject) => {
-      db.one('INSERT INTO users(user_id, first_name, last_name) VALUES(nextval(\'users_sequence\'), $1, $2) returning user_id', [firstName, lastName])
-        .then(data => resolve(data))
-        .catch(error => reject(error));
-    });
+    return db.one('INSERT INTO users(user_id, first_name, last_name) VALUES(nextval(\'users_sequence\'), $1, $2) returning user_id', [firstName, lastName]);
   },
 
   getUser(userId) {
