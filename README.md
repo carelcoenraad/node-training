@@ -1,39 +1,42 @@
-## Requirements
+# Node.js Training - 1 Start
+
+## Getting Started
+
+### Prerequisites
 - Node v6 or higher
 - NPM
-- Gulp
 
-## Installing
-- `$ npm i -g gulp`
-- `$ npm i`
+### Installing
+```bash
+$ npm install
+```
 
-## Running
-`$ gulp serve`
+### Running
+```bash
+$ npm start
+````
+
+```bash
+$ npm run dev
+```
+
+### .env
+```
+# Server
+PORT=3000
+
+# Logger
+LOG_LEVEL=debug
+LOG_PRETTY_PRINT=true
+```
 
 ## Training information
 ### Functionality
 - Project setup
+  - Environment variables
   - ES6
-  - Config
-  - Gulp
   - ESLint
+  - Logger
+  - NPM scripts
 - Express server
   - Hello world
-
-### Gulp tasks
-  - serve (Nodemon)
-  - lint (ESLint)
-  - help (task-listing)
-
-### Dependencies
-- express
-
-### Devdependencies
-- eslint
-- eslint-config-airbnb-base
-- eslint-plugin-import
-- gulp
-- gulp-eslint
-- gulp-load-plugins
-- gulp-nodemon
-- gulp-task-listing
