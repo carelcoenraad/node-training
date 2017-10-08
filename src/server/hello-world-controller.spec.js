@@ -2,7 +2,7 @@
 
 const chai = require('chai');
 const sinon = require('sinon');
-const helloWorld = require('./hello-world');
+const helloWorldController = require('./hello-world-controller');
 
 // Setup Chai
 const { expect } = chai;
@@ -27,7 +27,7 @@ describe('helloWorld', () => {
    */
   describe('helloWorld method', () => {
     it('should respond by sending a hello world message', () => {
-      helloWorld.helloWorld(req, res);
+      helloWorldController.helloWorld(req, res);
       expect(res.send.calledWith('Hello world')).to.equal(true);
     });
   });
