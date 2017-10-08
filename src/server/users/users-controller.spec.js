@@ -1,5 +1,6 @@
 'use strict';
 
+require('./../common/env');
 const sinon = require('sinon');
 const usersController = require('./users-controller');
 

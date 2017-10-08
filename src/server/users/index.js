@@ -1,6 +1,6 @@
 'use strict';
 
-const usersRouter = require('express').Router(); // eslint-disable-line new-cap
+const usersRouter = require('express').Router();
 const usersController = require('./users-controller.js');
 
 usersRouter.route('/')

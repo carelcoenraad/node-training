@@ -6,27 +6,47 @@
     "node": "6.x"
   },
   "scripts": {
-    "start": "node ./src/server/app.js",
-    "test": "gulp unit-test"
+    "start": "node './src/server/app.js'",
+    "dev": "cross-env NODE_ENV=local nodemon --inspect './src/server/app.js' --exec 'npm run lint-fix && npm run lint && node'",
+    "lint": "eslint . --ignore-path .gitignore",
+    "lint-fix": "eslint --fix . --ignore-path .gitignore",
+    "integration-test": "cross-env NODE_ENV=test mocha 'test/integration' --timeout 30000",
+    "unit-test": "cross-env NODE_ENV=test nyc mocha 'src/**/*spec.js' --timeout 30000",
+    "pretest": "npm run lint",
+    "test": "npm run unit-test && npm run integration-test"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "express": "^4.14.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.1",
     "helmet": "^3.1.0",
-    "pg-promise": "^5.5.0"
+    "pg-promise": "^6.10.3",
+    "pino": "^4.7.2"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint": "^3.12.1",
-    "eslint-config-airbnb-base": "^11.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "gulp": "^3.9.1",
-    "gulp-eslint": "^3.0.1",
-    "gulp-istanbul": "^1.1.1",
-    "gulp-load-plugins": "^1.4.0",
-    "gulp-mocha": "^3.0.1",
-    "gulp-nodemon": "^2.2.1",
-    "gulp-task-listing": "^1.0.1",
-    "sinon": "^1.17.6"
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "cross-env": "^5.0.5",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb-base": "^12.0.1",
+    "eslint-plugin-import": "^2.7.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.5.3",
+    "nodemon": "^1.12.1",
+    "nyc": "^11.2.1",
+    "sinon": "^4.0.0"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "src/**/*.spec.js"
+    ],
+    "all": true,
+    "reporter": [
+      "html"
+    ],
+    "report-dir": "./test/coverage"
   }
 }

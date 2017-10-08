@@ -4,19 +4,23 @@ const usersData = {
   users: [
     {
       id: '1',
-      name: 'Eric Cartman'
+      firstName: 'Eric',
+      lastName: 'Cartman'
     },
     {
       id: '2',
-      name: 'Kenny McCormick'
+      firstName: 'Kenny',
+      lastName: 'McCormick'
     },
     {
       id: '3',
-      name: 'Kyle Broflovski'
+      firstName: 'Kyle',
+      lastName: 'Broflovski'
     },
     {
       id: '4',
-      name: 'Stan Marsh'
+      firstName: 'Stan',
+      lastName: 'Marsh'
     }
   ]
 };

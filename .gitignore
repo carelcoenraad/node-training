@@ -36,11 +36,17 @@
 ehthumbs.db
 Thumbs.db
 
-# Generated folders #
-#####################
-node_modules/
-tests/
+# Generated files and folders #
+###############################
+.env
+.nyc_output
+coverage
+node_modules
 
-# Secret files #
-################
-connection.js
+# IDE #
+#######
+/.idea
+*.iml
+.classpath
+.project
+/.vscode
