@@ -1,9 +1,12 @@
 'use strict';
 
-const expect = require('chai').expect;
+const chai = require('chai');
 const sinon = require('sinon');
 const usersController = require('./users-controller');
 const usersData = require('./users-data.js');
+
+// Setup chai
+const { expect } = chai;
 
 /**
  * Describe usersController

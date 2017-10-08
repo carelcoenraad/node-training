@@ -15,8 +15,8 @@ const usersController = {
    * GET /users/:userId
    */
   getUser(req, res) {
-    const userId = req.params.userId;
-    const users = usersData.users;
+    const { userId } = req.params;
+    const { users } = usersData;
 
     // Search for the user in the usersData
     const user = users.find(element => element.id === userId);

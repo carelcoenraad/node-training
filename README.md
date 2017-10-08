@@ -1,50 +1,49 @@
-## Requirements
+# Node.js Training - 3 API
+
+## Getting Started
+
+### Prerequisites
 - Node v6 or higher
 - NPM
-- Gulp
 
-## Installing
-- `$ npm i -g gulp`
-- `$ npm i`
+### Installing
+```bash
+$ npm install
+```
 
-## Running
-`$ gulp serve`
+### Running
+```bash
+$ npm start
+````
+
+```bash
+$ npm run dev
+```
+
+```bash
+$ npm test
+```
+
+### .env
+```
+# Server
+PORT=3000
+
+# Logger
+LOG_LEVEL=debug
+LOG_PRETTY_PRINT=true
+```
 
 ## Training information
 ### Functionality
 - Project setup
+  - Environment variables
   - ES6
-  - Config
-  - Gulp
   - ESLint
+  - Logger
+  - NPM scripts
 - Express server
   - Hello world
-  - Helmet middleware
+  - Middleware
   - Users API (stubbed)
-- Unit testing
-
-### Gulp tasks
-- serve (Nodemon)
-- lint (ESLint)
-- help (task-listing)
-- unit-test (Mocha)
-- pre-unit-test-report (Istanbul)
-- unit-test-report (Mocha + Istanbul)
-
-### Dependencies
-- express
-- helmet
-
-### Devdependencies
-- chai
-- eslint
-- eslint-config-airbnb-base
-- eslint-plugin-import
-- gulp
-- gulp-eslint
-- gulp-istanbul
-- gulp-load-plugins
-- gulp-mocha
-- gulp-nodemon
-- gulp-task-listing
-- sinon
+- Testing
