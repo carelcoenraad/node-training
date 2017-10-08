@@ -1,8 +1,11 @@
 'use strict';
 
-const expect = require('chai').expect;
+const chai = require('chai');
 const sinon = require('sinon');
 const helloWorld = require('./hello-world');
+
+// Setup Chai
+const { expect } = chai;
 
 /**
  * Describe helloWorld
