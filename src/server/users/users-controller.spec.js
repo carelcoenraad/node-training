@@ -1,12 +1,13 @@
 'use strict';
 
+require('./../common/env');
 const sinon = require('sinon');
 const usersController = require('./users-controller');
 
 /**
  * Describe usersController
  */
-describe('usersController', () => {
+xdescribe('usersController', () => {
   let req;
   let res;
 

@@ -19,7 +19,7 @@ function Session(app) {
     password: 'admin'
   };
 
-   // Function to find a user
+  // Function to find a user
   function findUser(username, done) {
     if (username === localUser.username) {
       return done(null, localUser);

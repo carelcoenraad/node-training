@@ -1,106 +1,84 @@
 'use strict';
 
-const db = require('./../database');
+const usersService = require('./users-service');
 
 const usersController = {
   /**
    * GET /users
    */
-  getUsers(req, res) {
-    db.getUsers()
-      .then((data) => {
-        res.status(200);
-        res.json({
-          users: data
-        });
-      })
-      .catch((error) => {
-        res.status(500);
-        res.send(error);
-      });
+  getUsers(req, res, next) {
+    usersService.getUsers()
+      .then(data => res.status(200).json({ users: data }))
+      .catch(next);
   },
 
   /**
    * POST /users
    */
-  createUser(req, res) {
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
+  createUser(req, res, next) {
+    const params = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName
+    };
 
-    db.createUser(firstName, lastName)
-      .then((data) => {
-        res.location(`/users/${data.user_id}`);
-        res.sendStatus(201);
-      })
-      .catch((error) => {
-        res.status(500);
-        res.json(error);
-      });
+    usersService.createUser(params)
+      .then(data => res.location(`/users/${data.user_id}`).sendStatus(201))
+      .catch(next);
   },
 
   /**
    * GET /users/:userId
    */
-  getUser(req, res) {
-    const userId = req.params.userId;
+  getUser(req, res, next) {
+    const { userId } = req.params;
 
-    db.getUser(userId)
+    usersService.getUser(userId)
       .then((data) => {
         if (!data) {
-          res.status(404);
-          res.send(`Could not find user with id ${userId}`);
+          return res.status(404).json({ message: `Could not find user with id ${userId}` });
         }
 
-        res.status(200);
-        res.json(data);
+        return res.status(200).json(data);
       })
-      .catch((error) => {
-        res.status(500);
-        res.json(error);
-      });
+      .catch(next);
   },
 
   /**
    * PUT /users/:userId
    */
-  updateUser(req, res) {
-    const userId = req.params.userId;
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
+  updateUser(req, res, next) {
+    const params = {
+      userId: req.params.userId,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName
+    };
 
-    db.updateUser(userId, firstName, lastName)
+    usersService.updateUser(params)
       .then((data) => {
         if (data.rowCount === 0) {
-          res.status(404);
-          res.send(`Could not update user with id ${userId}`);
+          return res.status(404).json({ message: `Could not update user with id ${params.userId}` });
         }
 
-        res.sendStatus(200);
+        return res.sendStatus(200);
       })
-      .catch((error) => {
-        res.status(500);
-        res.json(error);
-      });
+      .catch(next);
   },
 
   /**
    * DELETE /users/:userId
    */
-  deleteUser(req, res) {
-    const userId = req.params.userId;
+  deleteUser(req, res, next) {
+    const { userId } = req.params;
 
-    db.deleteUser(userId)
+    usersService.deleteUser(userId)
       .then((data) => {
         if (data.rowCount === 0) {
-          res.sendStatus(410);
+          return res.sendStatus(410);
         }
 
-        res.sendStatus(204);
+        return res.sendStatus(204);
       })
-      .catch((error) => {
-        res.status(500);
-        res.json(error);
-      });
+      .catch(next);
   }
 };
 

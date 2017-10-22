@@ -1,8 +1,8 @@
 'use strict';
 
-const usersRouter = require('express').Router(); // eslint-disable-line new-cap
+const usersRouter = require('express').Router();
 const usersController = require('./users-controller.js');
-const authentication = require('./../session').authentication;
+const { authentication } = require('./../session');
 
 usersRouter.all('*', authentication.requireAuthentication);
 
