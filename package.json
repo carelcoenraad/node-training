@@ -8,8 +8,8 @@
   "scripts": {
     "start": "node './src/server/app.js'",
     "dev": "cross-env NODE_ENV=local nodemon --inspect './src/server/app.js' --exec 'npm run lint-fix && npm run lint && node'",
-    "lint": "eslint .",
-    "lint-fix": "eslint --fix ."
+    "lint": "eslint . --ignore-path .gitignore",
+    "lint-fix": "eslint --fix . --ignore-path .gitignore"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
