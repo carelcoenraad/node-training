@@ -6,37 +6,37 @@
     "node": "6.x"
   },
   "scripts": {
-    "start": "node './src/server/app.js'",
-    "dev": "cross-env NODE_ENV=local nodemon --inspect './src/server/app.js' --exec 'npm run lint-fix && npm run lint && node'",
+    "start": "node \"src/server/app.js\"",
+    "dev": "cross-env NODE_ENV=local nodemon --inspect \"src/server/app.js\" --exec \"npm run lint-fix && npm run lint && node\"",
     "lint": "eslint . --ignore-path .gitignore",
     "lint-fix": "eslint --fix . --ignore-path .gitignore",
-    "integration-test": "cross-env NODE_ENV=test mocha 'test/integration' --timeout 30000",
-    "unit-test": "cross-env NODE_ENV=test nyc mocha 'src/**/*spec.js' --timeout 30000",
+    "integration-test": "cross-env NODE_ENV=test mocha \"test/integration\" --exit --timeout 30000",
+    "unit-test": "cross-env NODE_ENV=test nyc mocha \"src/**/*spec.js\" --timeout 30000",
     "pretest": "npm run lint",
     "test": "npm run unit-test && npm run integration-test"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "dotenv": "^4.0.0",
-    "express": "^4.16.1",
+    "express": "^4.16.2",
     "express-session": "^1.14.2",
     "helmet": "^3.1.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg-promise": "^6.10.3",
-    "pino": "^4.7.2"
+    "pino": "^4.8.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "cross-env": "^5.0.5",
+    "dotenv": "^4.0.0",
     "eslint": "^4.8.0",
     "eslint-config-airbnb-base": "^12.0.1",
     "eslint-plugin-import": "^2.7.0",
     "istanbul": "^0.4.5",
-    "mocha": "^3.5.3",
+    "mocha": "^4.0.1",
     "nodemon": "^1.12.1",
-    "nyc": "^11.2.1",
+    "nyc": "^11.3.0",
     "sinon": "^4.0.0"
   },
   "nyc": {
